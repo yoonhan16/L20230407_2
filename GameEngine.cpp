@@ -54,17 +54,17 @@ void GameEngine::Load(std::string Filename)
 		else if (c == 'P')
 		{
 			GetWorld()->SpawnActor(new APlayer(PositionX, PositionY));
-			printf("플레이어");
+			//printf("플레이어");
 		}
 		else if (c == 'G')
 		{
 			GetWorld()->SpawnActor(new AGoal(PositionX, PositionY));
-			printf("목표");
+			//printf("목표");
 		}
 		else if (c == 'M')
 		{
 			GetWorld()->SpawnActor(new AMonster(PositionX, PositionY));
-			printf("몬스터");
+			//printf("몬스터");
 		}
 
 		if (c == '\n')
