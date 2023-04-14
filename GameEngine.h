@@ -6,7 +6,7 @@ public:
 	GameEngine();
 	virtual ~GameEngine();
 
-	virtual void init();   //초기화 함수, 재정의 가능
+	virtual void Init();   //초기화 함수, 재정의 가능
 	virtual void Load(std::string Filename);
 	void Run();
 	void Stop();

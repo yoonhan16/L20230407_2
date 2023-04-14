@@ -16,6 +16,10 @@ public:
 	virtual void Tick();
 	virtual void Render();
 
+	void Sort();
+
+
+
 public:	
 
 	std::vector<AActor*> Actors;

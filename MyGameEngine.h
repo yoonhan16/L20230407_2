@@ -6,9 +6,6 @@ public:
 	MyGameEngine();
 	virtual ~MyGameEngine();
 
-	virtual void init() override;
-
-
-
+	virtual void Init() override;
 
 };

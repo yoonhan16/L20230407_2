@@ -8,6 +8,7 @@
 #include "Monster.h"
 #include "Goal.h"
 
+#include <algorithm>
 #include <iostream>
 
 GameEngine::GameEngine()
@@ -25,7 +26,7 @@ GameEngine::~GameEngine()
 	}
 }
 
-void GameEngine::init()
+void GameEngine::Init()
 {
 	World = new UWorld();
 }
@@ -44,6 +45,7 @@ void GameEngine::Load(std::string Filename)
 		if (c == '*')
 		{
 			GetWorld()->SpawnActor(new AWall(PositionX, PositionY));
+			GetWorld()->SpawnActor(new AFloor(PositionX, PositionY));
 			//printf("벽");
 		}
 		else if (c == ' ')
@@ -54,31 +56,36 @@ void GameEngine::Load(std::string Filename)
 		else if (c == 'P')
 		{
 			GetWorld()->SpawnActor(new APlayer(PositionX, PositionY));
+			GetWorld()->SpawnActor(new AFloor(PositionX, PositionY));
 			//printf("플레이어");
 		}
 		else if (c == 'G')
 		{
 			GetWorld()->SpawnActor(new AGoal(PositionX, PositionY));
+			GetWorld()->SpawnActor(new AFloor(PositionX, PositionY));
 			//printf("목표");
 		}
 		else if (c == 'M')
 		{
 			GetWorld()->SpawnActor(new AMonster(PositionX, PositionY));
+			GetWorld()->SpawnActor(new AFloor(PositionX, PositionY));
 			//printf("몬스터");
 		}
 
 		if (c == '\n')
 		{
 			++PositionY;
-			PositionX = 1;
-			printf("줄바꿈");
+			PositionX = 0;
 		}
-		printf("%c", c);
+		//printf("%c", c);
 		++PositionX;
 	}
 
 
 	fclose(file);
+
+	GetWorld()->Sort();
+
 }
 
 void GameEngine::Run()

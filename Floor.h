@@ -1,6 +1,6 @@
 #pragma once
 #include "Actor.h"
-
+#include <string>
 class AFloor : public AActor
 {
 public:

@@ -10,6 +10,7 @@ APlayer::APlayer()
 APlayer::APlayer(int NewX, int NewY, char NewShape)
 	:AActor(NewX, NewY, NewShape)
 {
+	SortOrder = 3;
 }
 
 APlayer::~APlayer()

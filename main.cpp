@@ -1,25 +1,15 @@
 #include <iostream>
-#include "World.h"
-#include "Player.h"
-#include "Goal.h"
-#include "GameEngine.h"
+
+#include "MyGameEngine.h"
 
 using namespace std;
 
 int main()
 {
 
-	//bool bIsRunning = true;
-	//GameEngine
-	//UWorld* World = new UWorld();
-	//
-	//Load
-	//World->SpawnActor(new APlayer());
-	//World->SpawnActor(new AGoal());
+	MyGameEngine* Engine = new MyGameEngine();
 
-	GameEngine* Engine = new GameEngine();
-
-	Engine->init();
+	Engine->Init();
 	Engine->Run();
 
 

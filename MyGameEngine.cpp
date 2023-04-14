@@ -16,9 +16,9 @@ MyGameEngine::~MyGameEngine()
 
 }
 
-void MyGameEngine::init()
+void MyGameEngine::Init()
 {
-	GameEngine::init();
+	GameEngine::Init();
 	//__super::init();
 
 	//Map_Load
