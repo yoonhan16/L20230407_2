@@ -20,13 +20,10 @@ AActor::AActor(int NewX, int NewY, char NewShape)
     X = NewX;
     Y = NewY;
     Shape = NewShape;
+
 }
 
 AActor::~AActor()
-{
-}
-
-void AActor::Input()
 {
 
 }

@@ -12,13 +12,13 @@ public:
 
 	void SpawnActor(AActor* NewActor);              // 포인터를 달아야 액터의 자식들이 다 들어온다, 그리고 protected 로 구현해야 함
 
-	virtual void input();
 	virtual void Tick();
 	virtual void Render();
 
 	void Sort();
 
-
+	//원래는 physics 에서 수행하는 항목
+	bool CheckCollision(int X, int Y);
 
 public:	
 

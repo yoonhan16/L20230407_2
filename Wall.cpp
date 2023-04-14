@@ -2,6 +2,7 @@
 
 AWall::AWall()
 {
+	bIsCollision = true;
 }
 
 AWall::AWall(int NewX, int NewY, char NewShape)
@@ -13,8 +14,12 @@ AWall::AWall(int NewX, int NewY, char NewShape)
 	//X = NewX;
 	//Y = NewY;
 	//Shape = NewShape;
+
+	bIsCollision = true;
+
 }
 
 AWall::~AWall()
 {
 }
+

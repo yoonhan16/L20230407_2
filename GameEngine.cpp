@@ -10,11 +10,13 @@
 
 #include <algorithm>
 #include <iostream>
+#include <conio.h>
 
 GameEngine::GameEngine()
 {
 	bIsRunning = true;
 	World = nullptr;
+	KeyCode = 0;
 }
 
 GameEngine::~GameEngine()
@@ -31,7 +33,7 @@ void GameEngine::Init()
 	World = new UWorld();
 }
 
-void GameEngine::Load(std::string Filename)
+void GameEngine::Load(std::string Filename)                        //UE 스타일은 LoadLevel
 {
 	FILE* file;          //파일의 처음 시작 지점을 읽는 문장        getc = 콘솔에서 읽기 fgetc = 파일에서 읽기
 	char c;
@@ -106,7 +108,7 @@ void GameEngine::Stop()
 
 void GameEngine::input()
 {
-	World->input();
+	KeyCode = _getch();
 }
 
 void GameEngine::Tick()

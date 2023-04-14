@@ -22,14 +22,6 @@ void UWorld::SpawnActor(AActor* NewActor)
 	}
 }
 
-void UWorld::input()
-{
-	for (auto ProcessActor : Actors)
-	{
-		ProcessActor->Input();
-	}
-}
-
 void UWorld::Tick()
 {
 	for (auto ProcessActor : Actors)
@@ -50,4 +42,18 @@ void UWorld::Sort()
 {
 	//Actors[0] > Actors[2]; 자동으로 호출;
 	std::sort(Actors.begin(), Actors.end(), AActor::Compare);
+}
+
+bool UWorld::CheckCollision(int X, int Y)
+{
+	for (auto OtherActor : Actors)
+	{
+		if (OtherActor->X == X &&
+			OtherActor->Y == Y &&
+			OtherActor->bIsCollision == true)
+		{
+			return true;
+		}
+	}
+	return false;
 }

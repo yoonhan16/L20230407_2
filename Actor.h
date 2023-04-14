@@ -9,13 +9,18 @@ public:
 	virtual ~AActor();
 
 
-	virtual void Input();               // = 0 이 붙으면순수 가상함수, 무조건 상속 받아야만 함.
+	//virtual void Input();               // = 0 이 붙으면순수 가상함수, 무조건 상속 받아야만 함.
 	virtual void Tick();
 	virtual void Render();
 
-	virtual bool operator<(AActor* RHS)       // LHS , RHS (왼쪽 오른쪽 비교하는 언어)
+	virtual bool operator<(AActor& RHS)       // LHS , RHS (왼쪽 오른쪽 비교하는 언어)
 	{
-		return (this->SortOrder) < (RHS->SortOrder);
+		return (this->SortOrder) < (RHS.SortOrder);
+	}
+
+	virtual bool operator>(AActor& RHS)       
+	{
+		return (this->SortOrder) > (RHS.SortOrder);
 	}
 
 	static inline bool Compare(const AActor* LHS, const AActor* RHS)
@@ -31,7 +36,7 @@ public:                                 // protected 로 하면 get set 다 만들어줘
 	int Y;
 	char Shape;
 	int SortOrder = 1; // 숫자 작은 걸 먼저 그린다 (이거는 본인이 설정)
-
+	bool bIsCollision = false;
 
 };
 

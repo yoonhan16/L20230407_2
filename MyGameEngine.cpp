@@ -6,6 +6,8 @@
 #include "Goal.h"
 #include "World.h"
 
+MyGameEngine* MyGameEngine::Instance = nullptr;
+
 MyGameEngine::MyGameEngine()
 {
 
@@ -25,3 +27,4 @@ void MyGameEngine::Init()
 	Load("level1.dat");
 
 }
+

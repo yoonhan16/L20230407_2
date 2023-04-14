@@ -8,6 +8,5 @@ public:
 	AWall(int NewX, int NewY, char NewShape = '*');
 	virtual ~AWall();
 
-
 };
 
