@@ -8,7 +8,7 @@ public:
 	AMonster(int NewX, int NewY, char NewShape = 'M');
 	virtual~AMonster();
 
-
+	virtual void Tick() override;
 
 
 };

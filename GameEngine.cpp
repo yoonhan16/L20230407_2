@@ -12,6 +12,8 @@
 #include <iostream>
 #include <conio.h>
 
+
+
 GameEngine::GameEngine()
 {
 	bIsRunning = true;
@@ -26,11 +28,24 @@ GameEngine::~GameEngine()
 		delete World;
 		World = nullptr;
 	}
+
+	SDL_DestroyRenderer(MyRenderer);
+	SDL_DestroyWindow(MyWindow);
+	SDL_Quit();                                 // C style 코딩, 이닛과 큇 사이에 뭔가를 함
+
 }
 
 void GameEngine::Init()
 {
 	World = new UWorld();
+
+	SDL_Init(SDL_INIT_EVERYTHING);
+
+	MyWindow = SDL_CreateWindow("Game", 100, 100, 800, 600, SDL_WINDOW_VULKAN);
+	MyRenderer = SDL_CreateRenderer(MyWindow, -1, SDL_RENDERER_TARGETTEXTURE
+		| SDL_RENDERER_ACCELERATED);           // 뒤에 있는 2개는 3D 할때 필요, 지금은 0? 넣어도 돌아감
+
+
 }
 
 void GameEngine::Load(std::string Filename)                        //UE 스타일은 LoadLevel
@@ -92,7 +107,7 @@ void GameEngine::Load(std::string Filename)                        //UE 스타일은
 
 void GameEngine::Run()
 {
-	while (bIsRunning = true) //Frame
+	while (bIsRunning) //Frame
 	{
 		//system ("cls");
 		input();
@@ -108,7 +123,8 @@ void GameEngine::Stop()
 
 void GameEngine::input()
 {
-	KeyCode = _getch();
+	//KeyCode = _getch();
+	SDL_PollEvent(&MyEvent);
 }
 
 void GameEngine::Tick()
@@ -118,5 +134,10 @@ void GameEngine::Tick()
 
 void GameEngine::Render()
 {
+	SDL_SetRenderDrawColor(MyRenderer, 0, 0, 0, 0);
+	SDL_RenderClear(MyRenderer);
+
 	World->Render();
+
+	SDL_RenderPresent(MyRenderer);
 }

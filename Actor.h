@@ -38,5 +38,9 @@ public:                                 // protected 로 하면 get set 다 만들어줘
 	int SortOrder = 1; // 숫자 작은 걸 먼저 그린다 (이거는 본인이 설정)
 	bool bIsCollision = false;
 
+	int R;
+	int G;
+	int B;
+
 };
 

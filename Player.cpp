@@ -7,48 +7,66 @@ APlayer::APlayer()
 	X = 2;
 	Y = 2;
 	bIsCollision = false;
+
+	R = 0;
+	G = 0;
+	B = 255;
 }
 
 APlayer::APlayer(int NewX, int NewY, char NewShape)
 	:AActor(NewX, NewY, NewShape)
 {
 	SortOrder = 3;
+	R = 0;
+	G = 0;
+	B = 255;
 }
 
 void APlayer::Tick()
 {
-	switch (GEngine->KeyCode)
+	if (GEngine->MyEvent.type == SDL_KEYDOWN)                //한번만 입력하게 해줌
+	{
+		return;
+	}
+
+
+	switch (GEngine->MyEvent.key.keysym.sym)
 	{
 		//if (X == 1 && X == 10 && Y == 1 && Y == 10)
 		//{
 		//	return;
 		//}
 
-	case 'w':
+	case SDLK_w:
+	case SDLK_UP:
 		if (!GEngine->GetWorld()->CheckCollision(X, Y - 1))
 		{
 			Y--;
 		}
 		break;
-	case 's':
+	case SDLK_s:
+	case SDLK_DOWN:
 		if (!GEngine->GetWorld()->CheckCollision(X, Y + 1))
 		{
 			Y++;
 		}
 		break;
-	case 'a':
+	case SDLK_a:
+	case SDLK_LEFT:
 		if (!GEngine->GetWorld()->CheckCollision(X - 1, Y))
 		{
 			X--;
 		}
 		break;
-	case 'd':
+	case SDLK_d:
+	case SDLK_RIGHT:
 		if (!GEngine->GetWorld()->CheckCollision(X + 1, Y))
 		{
 			X++;
 		}
 		break;
-	case 'q':
+	case SDLK_ESCAPE:
+	case SDLK_q:
 		GEngine->Stop();
 		break;
 	}
